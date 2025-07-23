@@ -1,0 +1,13 @@
+aiohttp==3.9.3
+alembic==1.11.1
+asyncio==3.4.3
+aiogram==3.4.1
+asyncpg==0.29.0
+python-dotenv==1.0.1
+redis==5.0.1
+SQLAlchemy==2.0.25
+loguru==0.7.2
+psycopg2-binary==2.9.9
+requests==2.31.0
+aiogram-sqlite-storage==1.0.1
+celery==5.3.1
