@@ -116,6 +116,15 @@ class BidRepository(BaseRepository):
             .order_by(desc(Bid.created_at))
         ).all()
 
+    def delete_driver_bid(self, order_id: str, driver_id: int) -> bool:
+        """Удаление ставки водителя по заказу"""
+        bid = self.get_bid(order_id, driver_id)
+        if bid:
+            self.session.delete(bid)
+            self.session.commit()
+            return True
+        return False
+
 
 def init_db():
     Base.metadata.create_all(bind=engine)

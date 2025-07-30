@@ -28,7 +28,8 @@ driver_cb = DriverCallbackData
 
 def get_bid_kb(order_id: str) -> InlineKeyboardMarkup:
     """Клавиатура для участия в аукционе"""
-    return InlineKeyboardMarkup().row(
+    keyboard = InlineKeyboardMarkup()
+    keyboard.row(
         InlineKeyboardButton(
             "💵 Предложить цену",
             callback_data=bid_cb.new(action="create", order_id=order_id)
@@ -38,6 +39,13 @@ def get_bid_kb(order_id: str) -> InlineKeyboardMarkup:
             callback_data=bid_cb.new(action="refresh", order_id=order_id)
         )
     )
+    keyboard.row(
+        InlineKeyboardButton(
+            "❌ Отменить ставку",
+            callback_data=bid_cb.new(action="cancel", order_id=order_id)
+        )
+    )
+    return keyboard
 
 
 def get_driver_choice_kb(order_id: str, bids: list) -> InlineKeyboardMarkup:

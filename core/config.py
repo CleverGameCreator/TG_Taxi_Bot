@@ -15,5 +15,11 @@ class Config:
     ADMIN_IDS = [int(id) for id in os.getenv("ADMIN_IDS", "").split(",") if id]
 
     @staticmethod
-    def format_price(price: int) -> str:
-        return f"{price:,} ₽".replace(",", " ")
+    def format_price(price: float) -> str:
+        """Форматирует цену с рублями и копейками"""
+        rubles = int(price)
+        kopecks = int((price - rubles) * 100)
+        if kopecks > 0:
+            return f"{rubles:,} ₽ {kopecks:02d} коп.".replace(",", " ")
+        else:
+            return f"{rubles:,} ₽".replace(",", " ")

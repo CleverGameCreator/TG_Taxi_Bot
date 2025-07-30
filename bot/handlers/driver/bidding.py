@@ -1,7 +1,7 @@
 from aiogram import Router, types
 from aiogram.fsm.context import FSMContext
 from bot.states import DriverBidding
-from services.auction import process_bid
+from services.auction import process_bid, complete_auction
 from utils.formatters import format_price
 from database import SessionLocal
 from database.repositories import OrderRepository, BidRepository
@@ -46,13 +46,28 @@ async def start_bidding(
             except Exception as e:
                 logger.error(f"Error refreshing order: {e}")
                 await callback.answer("Ошибка при обновлении информации")
+    elif action == "cancel":
+        # Отмена ставки водителем
+        with SessionLocal() as session:
+            try:
+                bid_repo = BidRepository(session)
+                # Удаляем ставку водителя по этому заказу
+                bid_repo.delete_driver_bid(order_id, callback.from_user.id)
+                await callback.answer("Ваша ставка отменена")
+                await callback.message.answer("✅ Ваша ставка по этому заказу отменена")
+            except Exception as e:
+                logger.error(f"Error canceling bid: {e}")
+                await callback.answer("Ошибка при отмене ставки")
 
 
 async def process_bid_price(message: types.Message, state: FSMContext):
     try:
         price = int(message.text)
+        if price <= 0:
+            await message.answer("💰 Пожалуйста, введите положительное число больше нуля")
+            return
     except ValueError:
-        await message.answer("Пожалуйста, введите число")
+        await message.answer("💰 Пожалуйста, введите корректное число (например: 500)")
         return
 
     data = await state.get_data()
@@ -68,10 +83,10 @@ async def process_bid_price(message: types.Message, state: FSMContext):
         if success:
             await message.answer(f"✅ Ваша ставка {format_price(price)} принята!")
         else:
-            await message.answer("❌ Не удалось принять ставку. Возможно, аукцион завершен.")
+            await message.answer("❌ Не удалось принять ставку. Возможно, аукцион завершен или заказ уже назначен.")
     except Exception as e:
         logger.error(f"Bid processing error: {e}")
-        await message.answer("❌ Произошла ошибка при обработке ставки")
+        await message.answer("❌ Произошла ошибка при обработке ставки. Попробуйте еще раз позже.")
 
     await state.clear()
 

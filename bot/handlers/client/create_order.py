@@ -28,7 +28,7 @@ router = Router()
 async def create_order_start(message: types.Message, state: FSMContext):
     await state.set_state(OrderCreation.START_POINT)
     await message.answer(
-        "📍 Введите адрес отправления (точка А):",
+        "📍 Введите адрес отправления (точка А):\nПример: ул. Ленина, 10 или Москва, Красная площадь",
         reply_markup=static.get_cancel_kb()
     )
 
@@ -40,7 +40,7 @@ async def process_start_point(message: types.Message, state: FSMContext):
     await state.set_data(data) # Обновляем данные
 
     await state.set_state(OrderCreation.END_POINT)
-    await message.answer("🏁 Введите адрес назначения (точка Б):")
+    await message.answer("🏁 Введите адрес назначения (точка Б):\nПример: ул. Ленина, 10 или Москва, Красная площадь")
 
 
 async def process_end_point(message: types.Message, state: FSMContext):
@@ -50,18 +50,22 @@ async def process_end_point(message: types.Message, state: FSMContext):
     await state.set_data(data) # Обновляем данные
 
     await state.set_state(OrderCreation.TIME)
-    await message.answer("⏰ Введите время поездки (в формате ЧЧ:ММ):")
+    await message.answer("⏰ Введите время поездки (ЧЧ:ММ):\nПример: 14:30 или 09:15")
 
 
 async def process_time(message: types.Message, state: FSMContext):
-    # Простая валидация времени
-    if not message.text.replace(':', '').isdigit() or len(message.text) != 5:
-        await message.answer("Пожалуйста, введите время в формате ЧЧ:ММ (например 14:30)")
+    # Улучшенная валидация времени (ЧЧ:ММ)
+    import re
+    time_text = message.text.strip()
+    
+    # Проверка формата ЧЧ:ММ
+    if not re.match(r'^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$', time_text):
+        await message.answer("⏰ Введите время в формате ЧЧ:ММ (например 14:30 или 09:15)")
         return
 
     data = await state.get_data()
     data = data or {}
-    data['time'] = message.text
+    data['time'] = time_text
     await state.set_data(data) # Обновляем данные
 
     await state.set_state(OrderCreation.PRICE)
@@ -71,8 +75,11 @@ async def process_time(message: types.Message, state: FSMContext):
 async def process_price(message: types.Message, state: FSMContext):
     try:
         price = int(message.text)
+        if price <= 0:
+            await message.answer("💰 Пожалуйста, введите положительное число больше нуля")
+            return
     except ValueError:
-        await message.answer("Пожалуйста, введите число")
+        await message.answer("💰 Пожалуйста, введите корректное число (например: 500)")
         return
 
     data = await state.get_data()
