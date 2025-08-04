@@ -74,14 +74,29 @@ async def confirm_registration(callback: types.CallbackQuery, state: FSMContext)
         reply_markup=static.get_main_kb(callback.from_user.id)
     )
 
+    # Отправляем уведомление администраторам с фото и кнопками верификации
     for admin_id in Config.ADMIN_IDS:
         try:
-            await callback.bot.send_message(
-                admin_id,
-                f"⚠️ Новая заявка водителя!\n"
-                f"👤 Пользователь: @{user.username if user.username else 'нет'} ({user.full_name})\n"
-                f"🚗 Автомобиль: {user.car_model} {user.car_number}"
-            )
+            # Отправляем фото лицензии если оно есть
+            if user.license_photo:
+                await callback.bot.send_photo(
+                    admin_id,
+                    user.license_photo,
+                    caption=f"⚠️ Новая заявка водителя!\n"
+                            f"👤 Пользователь: @{user.username if user.username else 'нет'} ({user.full_name})\n"
+                            f"🚗 Автомобиль: {user.car_model} {user.car_number}\n\n"
+                            f"Пожалуйста, проверьте документы и примите решение:",
+                    reply_markup=static.get_admin_verification_kb(user.telegram_id)
+                )
+            else:
+                await callback.bot.send_message(
+                    admin_id,
+                    f"⚠️ Новая заявка водителя!\n"
+                    f"👤 Пользователь: @{user.username if user.username else 'нет'} ({user.full_name})\n"
+                    f"🚗 Автомобиль: {user.car_model} {user.car_number}\n\n"
+                    f"Пожалуйста, проверьте документы и примите решение:",
+                    reply_markup=static.get_admin_verification_kb(user.telegram_id)
+                )
         except Exception as e:
             pass
     await callback.answer("Данные отправлены на проверку!")

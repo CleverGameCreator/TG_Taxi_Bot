@@ -1,4 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from bot.keyboards.inline.auction import admin_cb
 
 
 def get_main_kb(user_id: int = None):
@@ -26,6 +27,15 @@ def get_confirmation_kb():
         [KeyboardButton(text="✅ Подтвердить")],
         [KeyboardButton(text="❌ Отмена")]
     ], resize_keyboard=True)
+    return kb
+
+
+def get_admin_verification_kb(user_id: int):
+    """Клавиатура для верификации водителя администратором"""
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="✅ Подтвердить", callback_data=admin_cb.new(action="approve", user_id=user_id))],
+        [InlineKeyboardButton(text="❌ Отклонить", callback_data=admin_cb.new(action="reject", user_id=user_id))]
+    ])
     return kb
 
 

@@ -15,6 +15,7 @@ from bot.handlers.driver.profile import router as profile_router
 from bot.handlers.driver.registration import router as registration_router
 from bot.handlers.client.create_order import router as create_order_router
 from bot.handlers.client.choose_driver import router as choose_driver_router
+from bot.handlers.admin.verification import router as admin_verification_router
 import asyncio
 
 # Настройка логирования
@@ -49,6 +50,7 @@ async def main():
     dp.include_router(registration_router)
     dp.include_router(create_order_router)
     dp.include_router(choose_driver_router)
+    dp.include_router(admin_verification_router)
 
     # Запуск бота
     logger.info("Starting bot...")

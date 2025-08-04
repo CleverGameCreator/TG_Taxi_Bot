@@ -25,6 +25,13 @@ class DriverCallbackData(CallbackData, prefix='driver'): # Добавлен пр
 
 driver_cb = DriverCallbackData
 
+# Определение callback data для админских действий
+class AdminCallbackData(CallbackData, prefix='admin'):
+    action: str = Field()
+    user_id: int = Field()
+    
+admin_cb = AdminCallbackData
+
 
 def get_bid_kb(order_id: str) -> InlineKeyboardMarkup:
     """Клавиатура для участия в аукционе"""

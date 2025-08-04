@@ -3346,3 +3346,56 @@ AttributeError: 'NoneType' object has no attribute 'lower'
 2025-07-23 13:17:40 | DEBUG | FSM Storage database database.db has been closed.
 2025-07-23 13:17:40 | INFO | Bot stopped
 2025-07-23 13:17:40 | INFO | Polling stopped for bot @Taxi_TGG_bot id=7986781338 - 'Taxi 🚕 Bot'
+2025-07-30 17:15:06 | DEBUG | Using proactor: IocpProactor
+2025-07-30 17:15:07 | DEBUG | FSM Storage database database.db has been opened.
+2025-07-30 17:15:07 | INFO | Starting bot...
+2025-07-30 17:15:07 | INFO | Start polling
+2025-07-30 17:15:18 | INFO | Run polling for bot @Taxi_TGG_bot id=7986781338 - 'Taxi 🚕 Bot'
+2025-07-30 17:15:49 | INFO | Update id=259321512 is handled. Duration 2203 ms by bot id=7986781338
+2025-07-30 17:15:49 | INFO | Update id=259321511 is handled. Duration 11906 ms by bot id=7986781338
+2025-07-30 17:15:53 | INFO | Update id=259321513 is handled. Duration 140 ms by bot id=7986781338
+2025-07-30 17:15:57 | INFO | Update id=259321514 is handled. Duration 157 ms by bot id=7986781338
+2025-07-30 17:16:02 | INFO | Update id=259321515 is handled. Duration 295 ms by bot id=7986781338
+2025-07-30 17:16:07 | INFO | Update id=259321516 is handled. Duration 343 ms by bot id=7986781338
+2025-07-30 17:16:12 | INFO | Update id=259321517 is handled. Duration 358 ms by bot id=7986781338
+2025-07-30 17:16:16 | INFO | Update id=259321518 is handled. Duration 93 ms by bot id=7986781338
+2025-07-30 17:16:19 | INFO | Update id=259321519 is handled. Duration 109 ms by bot id=7986781338
+2025-07-30 17:16:24 | INFO | Update id=259321520 is handled. Duration 93 ms by bot id=7986781338
+2025-07-30 17:16:26 | INFO | Update id=259321521 is handled. Duration 156 ms by bot id=7986781338
+2025-07-30 17:16:30 | INFO | Update id=259321522 is handled. Duration 437 ms by bot id=7986781338
+2025-07-30 17:17:10 | INFO | Update id=259321523 is handled. Duration 500 ms by bot id=7986781338
+2025-07-30 17:17:13 | INFO | Update id=259321524 is handled. Duration 140 ms by bot id=7986781338
+2025-07-30 17:17:14 | INFO | Update id=259321525 is handled. Duration 109 ms by bot id=7986781338
+2025-07-30 17:17:15 | INFO | Update id=259321526 is handled. Duration 77 ms by bot id=7986781338
+2025-07-30 17:17:30 | INFO | Update id=259321527 is handled. Duration 265 ms by bot id=7986781338
+2025-07-30 17:17:32 | INFO | Update id=259321528 is handled. Duration 436 ms by bot id=7986781338
+2025-07-30 17:19:11 | INFO | Polling stopped
+2025-07-30 17:19:11 | DEBUG | FSM Storage database database.db has been closed.
+2025-07-30 17:19:11 | INFO | Bot stopped
+2025-07-30 17:19:11 | INFO | Polling stopped for bot @Taxi_TGG_bot id=7986781338 - 'Taxi 🚕 Bot'
+2025-07-30 19:35:17 | DEBUG | Using proactor: IocpProactor
+2025-07-30 19:35:18 | DEBUG | FSM Storage database database.db has been opened.
+2025-07-30 19:35:18 | INFO | Starting bot...
+2025-07-30 19:35:18 | INFO | Start polling
+2025-07-30 19:35:30 | INFO | Run polling for bot @Taxi_TGG_bot id=7986781338 - 'Taxi 🚕 Bot'
+2025-07-30 19:36:11 | INFO | Update id=259321532 is handled. Duration 4875 ms by bot id=7986781338
+2025-07-30 19:36:11 | INFO | Update id=259321530 is handled. Duration 10000 ms by bot id=7986781338
+2025-07-30 19:36:12 | INFO | Update id=259321529 is handled. Duration 11625 ms by bot id=7986781338
+2025-07-30 19:36:12 | INFO | Update id=259321531 is handled. Duration 9452 ms by bot id=7986781338
+2025-07-30 19:36:15 | INFO | Update id=259321533 is handled. Duration 202 ms by bot id=7986781338
+2025-07-30 19:36:18 | INFO | Update id=259321534 is handled. Duration 358 ms by bot id=7986781338
+2025-07-30 19:36:23 | INFO | Update id=259321535 is handled. Duration 313 ms by bot id=7986781338
+2025-07-30 19:55:37 | INFO | Update id=259321536 is handled. Duration 11483 ms by bot id=7986781338
+2025-07-30 19:55:37 | INFO | Update id=259321537 is handled. Duration 2938 ms by bot id=7986781338
+2025-07-30 19:55:37 | INFO | Update id=259321538 is handled. Duration 625 ms by bot id=7986781338
+2025-07-30 19:55:40 | INFO | Update id=259321539 is handled. Duration 157 ms by bot id=7986781338
+2025-07-30 19:55:44 | INFO | Update id=259321540 is handled. Duration 188 ms by bot id=7986781338
+2025-07-30 19:55:46 | INFO | Update id=259321541 is handled. Duration 141 ms by bot id=7986781338
+2025-07-30 19:55:49 | INFO | Update id=259321542 is handled. Duration 125 ms by bot id=7986781338
+2025-07-30 19:56:01 | INFO | Update id=259321543 is handled. Duration 141 ms by bot id=7986781338
+2025-07-30 19:56:03 | INFO | Update id=259321544 is handled. Duration 561 ms by bot id=7986781338
+2025-07-30 19:56:11 | INFO | Update id=259321545 is handled. Duration 157 ms by bot id=7986781338
+2025-07-30 19:59:11 | INFO | Polling stopped
+2025-07-30 19:59:11 | DEBUG | FSM Storage database database.db has been closed.
+2025-07-30 19:59:11 | INFO | Bot stopped
+2025-07-30 19:59:11 | INFO | Polling stopped for bot @Taxi_TGG_bot id=7986781338 - 'Taxi 🚕 Bot'
